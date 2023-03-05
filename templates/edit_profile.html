@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load icon %}
+
+{% block title %}Edit Profile{% endblock title %}
+
+{% block content %}
+    <section class='signup container'>
+        {% if messages %}
+            <div class="edit-profile">
+            {% for message in messages %}
+                {{ message }}
+                <span class='edit-prf-close-btn'>{% icon "x" class="css-class" height="20" width="20" %}</span>
+            {% endfor %}
+            </div>
+        {% endif %}
+        <div class='signup-content'>
+            <form class='signup-form' method="post">
+                <h1 style='margin-bottom: 1rem;'>Edit profile</h1>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button id="edit-profile-button" type='submit' style='border: none; cursor: pointer; padding: .7rem 1rem;' class='btn'>Save</button>
+            </form>
+        </div>
+      </section>
+      <style>
+        input {
+            margin-bottom: 1rem
+        }
+      </style>
+{% endblock %}

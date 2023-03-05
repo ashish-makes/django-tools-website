@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Internet Speed Test{% endblock title %}
+
+{% block content %}
+<section class='qr-code-generator container'>
+    <div class='yt-video-downloader-content'>
+        
+        <form class='text-tools-form' method="post" onsubmit="showLoadingAnimation()">
+        <h1>Internet Speed Test</h1>
+        {% csrf_token %}
+        {% if download_speed and upload_speed %}
+        <p style ="margin-bottom: 1rem;">Download speed: <b>{{ download_speed|floatformat:2 }} Mbps</b></p>
+        <div class="meter">
+            <span style ="width: {{ download_speed|floatformat:2 }}%"></span>
+        </div>
+        <p style ="margin-bottom: 1rem;">Upload speed: <b>{{ upload_speed|floatformat:2 }} Mbps</b></p>
+        <div class="meter">
+            <span style="width: {{ upload_speed|floatformat:2 }}%"></span>
+        </div>
+        {% endif %}
+        <div id="loading-animation" style="display: none;">
+            <div class="spinner"></div>
+            <p>Running speed test...</p>
+        </div><br>
+        <center><input type="submit" value='Run Speed Test'></center><br>
+    </form>
+</div>
+</section>
+    <style>
+        /* CSS for the loading animation */
+        #loading-animation {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+        }
+
+        .spinner {
+            border: 5px solid #e7e9eb;
+            border-top: 5px solid #3760d4;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            margin-bottom: 1rem;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .meter {
+    height: 16px;
+    background-color: #e7e9eb;
+    border-radius: 50px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.meter span {
+    display: block;
+    height: 100%;
+    background-color: #3760d4;
+    width: 0;
+    transition: width 2s ease-in-out;
+}
+
+    </style>
+
+    <script>
+        function showLoadingAnimation() {
+            document.getElementById('loading-animation').style.display = 'flex';
+        }
+    </script>
+{% endblock %}

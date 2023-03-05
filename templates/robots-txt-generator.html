@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Robots.txt Generator{% endblock title %}
+
+{% block content %}
+<section class='qr-code-generator container'>
+    <div class='yt-video-downloader-content'>
+        <form class='text-tools-form'method="post" action="{% url 'robots-txt-generator' %}">
+            <h1>Robots.txt Generator</h1>
+            {% csrf_token %}
+        
+            <label for="url">Website URL:</label><br>
+            <textarea placeholder='Enter your website link' style='height: 40px' type="url" name="url" required></textarea><br>
+        
+            <center><input type="submit" value='Generate robots.txt'></center><br>
+            {% if website_url %}
+              <h1>Generated robots.txt</h1>
+              <textarea id='output-textarea'>
+User-agent: *
+Disallow:
+          
+Sitemap: {{website_url}}/sitemap.xml</textarea><br>
+              <center><a style='cursor:pointer;' onclick="copyText()" id="copy-button" class='btn'>Copy text</a></center>
+            {% endif %}
+          </form>
+        
+</div>
+</section>
+
+  <script type="text/javascript"> 
+
+    function copyText() {
+        var text = document.getElementById("output-textarea");
+        var CopyBtn = document.getElementById("copy-button");
+        // var message = document.querySelector(".success-msg");
+        text.select();
+        document.execCommand("copy");
+        CopyBtn.innerHTML = 'Copied!'
+        setTimeout(function() {
+            CopyBtn.innerHTML = 'Copy text'
+        }, 1000);
+        //message.style.display= 'block'
+      }
+
+</script>
+{% endblock %}

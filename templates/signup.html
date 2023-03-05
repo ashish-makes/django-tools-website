@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Signup{% endblock title %}
+
+{% block content %}
+
+<section class='signup container'>
+    <div class='signup-content'>
+        <form class='signup-form' method="post" action="{% url 'signup' %}">
+            <h1>Signup for Toolify</h1>
+            {% csrf_token %}
+            {{form.as_p}}
+            <div>
+                <ul class='password-instructions'>
+                    <li>Your password can't be too similar to your other personal information.</li>
+                    <li>Your password must contain at least 8 characters.</li>
+                    <li>Your password can't be a commonly used password.</li>
+                    <li>Your password can't be entirely numeric.</li>
+                </ul>
+            </div>
+            <button id="signup-button" type='submit' style='border: none; cursor: pointer; padding: .7rem 1rem;' class='btn'>Signup</button>
+        </form>
+    </div>
+</section>
+
+{% endblock content %}

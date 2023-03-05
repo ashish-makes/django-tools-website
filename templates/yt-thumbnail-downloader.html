@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load icon %}
+
+{% block title %}YouTube Thumbnail Downloader{% endblock title %}
+
+{% block content %}
+
+<section class='yt-video-downloader container'>
+    <div class='yt-video-downloader-content'>
+        
+        {% if messages %}
+        {% for message in messages %}
+        <p class='error-msg'>{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+
+        <form name='ytthumbform' class='yt-video-downloader-form' method="post">
+            <h1>YouTube Thumbnail Downloader</h1>
+            {% csrf_token %}
+            <label for="video_url">Enter YouTube Video URL:</label><br>
+            <input placeholder='https://www.youtube.com/watch?v=dQw4w9WgXcQ' type="text" id="video_url" name="video_url"><br><br>
+            <center><a href="javascript: submitform()" class='btn' type="submit">Get thumbnail</a></center><br>
+            {% if thumbnail_dict %}
+            <h1>Download Video Thumbnails</h1>
+            <img style='border-radius: 10px' src="{{ thumbnail_dict.Highest }}">
+            <center><div style='margin-top: 1rem'>
+                {% for resolution, thumbnail_url in thumbnail_dict.items %}
+                    <a style='' class='btn' href="{{ thumbnail_url }}" download>{{ resolution }}</a><br><br>
+                {% endfor %}
+            </div></center>
+        {% endif %}
+        </form>
+    </div>
+</section>
+
+<script type="text/javascript"> 
+    function submitform() {   document.ytthumbform.submit(); } 
+</script>
+
+{% endblock content %}

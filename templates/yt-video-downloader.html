@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load icon %}
+
+{% block title %}YouTube Video Downloader{% endblock title %}
+
+{% block content %}
+
+<section class='yt-video-downloader container'>
+    <div class='yt-video-downloader-content'>
+
+
+        {% if messages %}
+        {% for message in messages %}
+        <p class='error-msg'>{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+
+        <form name='ytvdoform' class='yt-video-downloader-form' action="" method="post">
+        <h1>Youtube video downloader</h1>
+        {% csrf_token %}
+
+        <label for="link">Enter URL: </label>
+        <input placeholder='https://www.youtube.com/watch?v=dQw4w9WgXcQ' type="text" id="link" name="link"><br><br>
+
+        <label for="format">Select format: </label>
+        <select class='select-menu' id="format" name="format">
+            <option value="lowest">Lowest</option>
+            <option value="highest">Highest</option>
+            <option value="480p">480p</option>
+            <option value="720p">720p</option>
+            <option value="1080p">1080p</option>
+        </select><br><br>
+
+        <center><a href="javascript: submitform()" class='btn' type="submit">Generate download link</a></center><br>
+        
+        {% if download_url %}
+        <div>
+        <p class='success-msg'>
+            <b>Video title: </b> {{filename}}<br><br>
+            <b>Video format: </b> {{format}}<br><br>
+            <b>Video length: </b> {{duration}}<br><br>
+            {% comment %} <b>Video thumbnail: </b> <img class="thumbnail" src='{{thumbnail_url}}'><br><br> {% endcomment %}
+            <b>Download: </b>Right-click the link below and choose "Save link as..." to download the video:
+        </p><br>
+        <center><a class='btn' href="{{ download_url }}" download="{{ filename }}">Download</a></center>
+        </div>
+        {% else %}
+
+        {% comment %} <p class='error-msg'>{{ msg }}</p> {% endcomment %}
+        {% endif %}
+    </form>
+</div>
+</section>
+
+<script type="text/javascript"> 
+    function submitform() {   document.ytvdoform.submit(); } 
+</script>
+
+{% endblock content %}

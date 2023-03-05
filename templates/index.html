@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load icon %}
+
+{% block title %}Home{% endblock title%} 
+
+{% block content %}
+
+<section class="home-hero container">
+  <h1 class="hero-header-heading">
+    <span
+      >Effortlessly <i>enhance</i> your workflow with Toolify's powerful suite
+      of <span class="hero-focus">free online tools</span>.</span
+    >
+  </h1>
+  <p>
+    Unlock your productivity potential with Toolify - your one-stop-shop for
+    free online tools such as
+    <b>PDF tools, downloader tools, social media tools and much more</b>. Try
+    our tools now and see the difference for yourself!
+  </p>
+  <div class="hero-btns">
+    {% if user.is_authenticated %}
+    <a class="btn" href="/tools">Explore all tools</a>&nbsp&nbsp
+    {% else %}
+    <a class="btn" href="/tools">Try for Free</a>&nbsp&nbsp
+    {% endif %}
+    {% if user.is_authenticated %}
+    <a style='display: none' class="btn" href="/signup">Sign up</a>
+    {% else %}
+    <a class="btn" href="/signup">Sign up</a>
+    {% endif %}
+  </div>
+</section>
+
+<section class="home-featured-tools">
+  <div class="container">
+    <h1>Our Popular Tools</h1>
+    <div class="home-tools">
+      {% if user.is_authenticated %}
+        <a href="/yt-video-downloader">
+      {% else %}
+        <a href="/login">
+      {% endif %}
+        <div class="home-tool">
+          <div class="tool-name-icom">
+            <div class="home-tool-icom">
+              {% icon "video" class="css-class" height="40" width="40" %}
+            </div>
+            <p><b>YT Video Downloader</b></p>
+          </div>
+          <p>Download any YouTube video in your desired format.</p>
+        </div>
+      </a>
+      {% if user.is_authenticated %}
+        <a href="/yt-thumbnail-downloader">
+      {% else %}
+        <a href="/login">
+      {% endif %}
+        <div class="home-tool">
+          <div class="tool-name-icom">
+            <div class="home-tool-icom">
+              {% icon "video" class="css-class" height="40" width="40" %}
+            </div>
+            <p><b>YT Thumbnail Downloader</b></p>
+          </div>
+          <p>Download any YouTube video thumbnail in your desired quality.</p>
+        </div>
+      </a>
+      {% if user.is_authenticated %}
+        <a href="/password-generator">
+      {% else %}
+        <a href="/login">
+      {% endif %}
+        <div class="home-tool">
+          <div class="tool-name-icom">
+            <div class="home-tool-icom">
+              {% icon "key" class="css-class" height="40" width="40" %}
+            </div>
+            <p><b>Password Generator</b></p>
+          </div>
+          <p>Generate strong passwords for your social media accounts in one click.</p>
+        </div>
+      </a>
+      {% if user.is_authenticated %}
+        <a href="/png-to-webp-convertor">
+      {% else %}
+        <a href="/login">
+      {% endif %}
+        <div class="home-tool">
+          <div class="tool-name-icom">
+            <div class="home-tool-icom">
+              {% icon "image" class="css-class" height="40" width="40" %}
+            </div>
+            <p><b>PNG to WebP Convertor</b></p>
+          </div>
+          <p>Convert any PNG image to WebP image and download directly on your device.</p>
+        </div>
+      </a>
+      {% if user.is_authenticated %}
+        <a href="/css-minifier">
+      {% else %}
+        <a href="/login">
+      {% endif %}
+        <div class="home-tool">
+          <div class="tool-name-icom">
+            <div class="home-tool-icom">
+              {% icon "code" class="css-class" height="40" width="40" %}
+            </div>
+            <p><b>CSS Minifier</b></p>
+          </div>
+          <p>Input your CSS code and receive a minified version of the code.</p>
+        </div>
+      </a>
+      {% if user.is_authenticated %}
+        <a href="/ip-lookup">
+      {% else %}
+        <a href="/login">
+      {% endif %}
+        <div class="home-tool">
+          <div class="tool-name-icom">
+            <div class="home-tool-icom">
+              {% icon "map-pin" class="css-class" height="40" width="40" %}
+            </div>
+            <p><b>IP Lookup</b></p>
+          </div>
+          <p>Check yout IP Adress details such as city, region, timezone and so on.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class='home-tools-features container'>
+    <h1 class='home-features-h1'>This is why people use our tools</h1>
+    <div class='home-tool-feature'>
+        <img src='{% static 'img/ready-to-use.svg' %}'>
+        <div>
+            <h1>Ready to use</h1>
+            <p>All tools on Toolify are ready to use, eliminating the need for users to download or install software on their device.</p>
+        </div>
+    </div>
+    <div class='home-tool-feature'>
+        {% comment %} <img class='f-mob-only' src='{% static 'img/wide-range-tools.svg' %}'> {% endcomment %}
+        <div>
+            <h1>Wide range of tools</h1>
+            <p>Toolify offers a wide range of tools across various categories, allowing users to complete tasks in different areas without having to switch between different websites or platforms.</p>
+        </div>
+        <img class='f-desk-only' src='{% static 'img/wide-range-tools.svg' %}'>
+    </div>
+    <div class='home-tool-feature'>
+        <img src='{% static 'img/powerful-tools.svg' %}'>
+        <div>
+            <h1>Powerful tools</h1>
+            <p>Toolify's suite of tools is designed to be powerful and effective, enabling users to complete their tasks quickly and efficiently.</p>
+        </div>
+    </div>
+</section>
+
+<section class='testimonials'>
+    <div class='container'>
+    <h1 class='home-features-h1'>People enjoy using our tools</h1>
+    <div class="testimonials-section">
+        <div class="testimonials-container">
+            <div class="testimonial">
+              <img src="https://api.dicebear.com/5.x/thumbs/svg?seed=johndoe" alt="Testimonial image">
+              <p>"Toolify has made my work so much easier! The wide range of tools available have helped me to complete my tasks in different areas without having to switch between different websitess."</p>
+              <span>- John Doe, CEO</span>
+            </div>
+            <div class="testimonial">
+              <img src="https://api.dicebear.com/5.x/thumbs/svg?seed=janesmith" alt="Testimonial image">
+              <p>"I am really impressed with Toolify's user-friendly interface and the ease of use of its various tools. It has saved me a lot of time and effort."</p>
+              <span>- Jane Smith, Designer</span>
+            </div>
+            <div class="testimonial">
+              <img src="https://api.dicebear.com/5.x/thumbs/svg?seed=bobjohnson" alt="Testimonial image">
+              <p>"I highly recommend Toolify to anyone looking for powerful tools for their daily tasks. The website offers a great user experience and the tools are incredibly useful."</p>
+              <span>- Bob Johnson, Manager</span>
+            </div>
+            <div class="testimonial">
+              <img src="https://api.dicebear.com/5.x/thumbs/svg?seed=lilychen" alt="Testimonial image">
+              <p>"Toolify has helped me to be more productive and efficient in my work. I can now complete my tasks faster and with greater accuracy."</p>
+              <span>- Lily Chen, Happy user</span>
+            </div>
+            <div class="testimonial">
+              <img src="https://api.dicebear.com/5.x/thumbs/svg?seed=sofiadavis" alt="Testimonial image">
+              <p>"I love Toolify's intuitive interface and the fact that I can access all the tools I need in one place. It has made my life so much easier!"</p>
+              <span>- Sofia Davis, Happy user</span>
+            </div>
+          </div>          
+      </div>
+    </div>   
+</section>
+
+<section class='signup-cta container'>
+  <div class='home-tool-feature' style='gap: 2rem; align-items: center'>
+    <div>
+      <h1 style='font-size: 40px;'>Ready to take your productivity to the next level?</h1>
+      <p style='margin-top: 1rem;  margin-bottom: 2rem'>Join Toolify today and start using our powerful tools to streamline your work.</p>
+      <div>
+        {% if user.is_authenticated %}
+        <a style='padding: .5rem 1rem;' class="btn" href="#">Thanks for joining us!</a>
+        {% else %}
+        <a style='padding: .5rem 1rem;' class="btn" href="/signup">Sign up today!</a>
+        {% endif %}
+      </div>
+    </div>
+    <img src='{% static 'img/signup-cta.svg' %}'>
+</div>
+</section>
+
+
+{% endblock content %}

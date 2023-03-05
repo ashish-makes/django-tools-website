@@ -1,0 +1,256 @@
+{% extends 'base.html' %}
+{% load icon %}
+
+{% block title %}Explore the collectino of tools{% endblock title %}
+
+{% block content %}
+
+<section class="tools">
+    <div class="container">
+      <h1 style='font-size: 40px; font-weight: 700;'>Explore the collection of tools</h1>
+      <div class="home-tools">
+        {% if user.is_authenticated %}
+          <a href="/yt-video-downloader">
+        {% else %}
+          <a href="/login">
+        {% endif %}
+          <div class="tools-tool">
+            <div class="tool-name-icom">
+              <div class="home-tool-icom">
+                {% icon "video" class="css-class" height="40" width="40" %}
+              </div>
+              <p><b>YouTube Video Downloader</b></p>
+            </div>
+            <p>Download any YouTube video in your desired format.</p>
+          </div>
+        </a>
+        {% if user.is_authenticated %}
+          <a href="/yt-thumbnail-downloader">
+        {% else %}
+          <a href="/login">
+        {% endif %}
+          <div class="tools-tool">
+            <div class="tool-name-icom">
+              <div class="home-tool-icom">
+                {% icon "image" class="css-class" height="40" width="40" %}
+              </div>
+              <p><b>YT Thumbnail Downloader</b></p>
+            </div>
+            <p>Download any YouTube video thumbnail in your desired quality.</p>
+          </div>
+        </a>
+        {% if user.is_authenticated %}
+          <a href="/qr-code-generator">
+        {% else %}
+          <a href="/login">
+        {% endif %}
+          <div class="tools-tool">
+            <div class="tool-name-icom">
+              <div class="home-tool-icom">
+                <i style='font-size: 2rem;' class="bi bi-qr-code"></i>
+              </div>
+              <p><b>QR Code Generator</b></p>
+            </div>
+            <p>Create, customize and download QR code on your device.</p>
+          </div>
+        </a>
+        {% if user.is_authenticated %}
+          <a href="/text-tools">
+        {% else %}
+          <a href="/login">
+        {% endif %}
+          <div class="tools-tool">
+            <div class="tool-name-icom">
+              <div class="home-tool-icom">
+                {% icon "file-text" class="css-class" height="40" width="40" %}
+              </div>
+              <p><b>Text Utilities</b></p>
+            </div>
+            <p>A wide collection of text tools that can change text case, reverse it and so on</p>
+          </div>
+        </a>
+        {% if user.is_authenticated %}
+          <a href="/password-generator">
+        {% else %}
+          <a href="/login">
+        {% endif %}
+          <div class="tools-tool">
+            <div class="tool-name-icom">
+              <div class="home-tool-icom">
+                {% icon "key" class="css-class" height="40" width="40" %}
+              </div>
+              <p><b>Passsword Generator</b></p>
+            </div>
+            <p>Generate strong passwords for your social media accounts in one click.</p>
+          </div>
+        </a>
+        {% if user.is_authenticated %}
+          <a href="/png-to-webp-convertor">
+        {% else %}
+          <a href="/login">
+        {% endif %}
+          <div class="tools-tool">
+            <div class="tool-name-icom">
+              <div class="home-tool-icom">
+                {% icon "image" class="css-class" height="40" width="40" %}
+              </div>
+              <p><b>PNG to WebP Convertor</b></p>
+            </div>
+            <p>Convert any PNG image to WebP image and download directly on your device.</p>
+          </div>
+        </a>
+        {% if user.is_authenticated %}
+          <a href="/webp-to-png-convertor">
+        {% else %}
+          <a href="/login">
+        {% endif %}
+          <div class="tools-tool">
+            <div class="tool-name-icom">
+              <div class="home-tool-icom">
+                {% icon "image" class="css-class" height="40" width="40" %}
+              </div>
+              <p><b>WebP to PNG Convertor</b></p>
+            </div>
+            <p>Convert any WebP image to PNG image & download directly on your device.</p>
+          </div>
+        </a>
+        {% if user.is_authenticated %}
+          <a href="/png-to-jpg-convertor">
+        {% else %}
+          <a href="/login">
+        {% endif %}
+          <div class="tools-tool">
+            <div class="tool-name-icom">
+              <div class="home-tool-icom">
+                {% icon "image" class="css-class" height="40" width="40" %}
+              </div>
+              <p><b>PNG to JPG Convertor</b></p>
+            </div>
+            <p>Convert any PNG image to JPG image and download directly on your device.</p>
+          </div>
+        </a>
+        {% if user.is_authenticated %}
+          <a href="/jpg-to-png-converter">
+        {% else %}
+          <a href="/login">
+        {% endif %}
+          <div class="tools-tool">
+            <div class="tool-name-icom">
+              <div class="home-tool-icom">
+                {% icon "image" class="css-class" height="40" width="40" %}
+              </div>
+              <p><b>JPG to PNG Convertor</b></p>
+            </div>
+            <p>Convert any JPG image to PNG image and download directly on your device.</p>
+          </div>
+        </a>
+        {% if user.is_authenticated %}
+          <a href="/jpg-to-webp-converter">
+        {% else %}
+          <a href="/login">
+        {% endif %}
+          <div class="tools-tool">
+            <div class="tool-name-icom">
+              <div class="home-tool-icom">
+                {% icon "image" class="css-class" height="40" width="40" %}
+              </div>
+              <p><b>JPG to WebP Convertor</b></p>
+            </div>
+            <p>Convert any JPG image to WebP image and download directly on your device.</p>
+          </div>
+        </a>
+        {% if user.is_authenticated %}
+          <a href="/image-compressor">
+        {% else %}
+          <a href="/login">
+        {% endif %}
+          <div class="tools-tool">
+            <div class="tool-name-icom">
+              <div class="home-tool-icom">
+                {% icon "image" class="css-class" height="40" width="40" %}
+              </div>
+              <p><b>Image Compressor</b></p>
+            </div>
+            <p>Reduce size of any image in just a click & download directly to your device.</p>
+          </div>
+        </a>
+        {% if user.is_authenticated %}
+        <a href="/css-minifier">
+      {% else %}
+        <a href="/login">
+      {% endif %}
+        <div class="tools-tool">
+          <div class="tool-name-icom">
+            <div class="home-tool-icom">
+              {% icon "code" class="css-class" height="40" width="40" %}
+            </div>
+            <p><b>CSS Minifier</b></p>
+          </div>
+          <p>Input your CSS code and receive a minified version of the code.</p>
+        </div>
+      </a>
+      {% if user.is_authenticated %}
+        <a href="/robots-txt-generator">
+      {% else %}
+        <a href="/login">
+      {% endif %}
+        <div class="tools-tool">
+          <div class="tool-name-icom">
+            <div class="home-tool-icom">
+              {% icon "code" class="css-class" height="40" width="40" %}
+            </div>
+            <p><b>Robots.txt Generator</b></p>
+          </div>
+          <p>Create robots.txt for your website to allow search engines to index it.</p>
+        </div>
+      </a>
+      {% if user.is_authenticated %}
+        <a href="/internet-speed-test">
+      {% else %}
+        <a href="/login">
+      {% endif %}
+        <div class="tools-tool">
+          <div class="tool-name-icom">
+            <div class="home-tool-icom">
+              {% icon "wifi" class="css-class" height="40" width="40" %}
+            </div>
+            <p><b>Internet Speed Tester</b></p>
+          </div>
+          <p>Test your internet connection's download and upload speed.</p>
+        </div>
+      </a>
+      {% if user.is_authenticated %}
+      <a href="/ip-lookup">
+    {% else %}
+      <a href="/login">
+    {% endif %}
+      <div class="tools-tool">
+        <div class="tool-name-icom">
+          <div class="home-tool-icom">
+            {% icon "map-pin" class="css-class" height="40" width="40" %}
+          </div>
+          <p><b>IP Lookup</b></p>
+        </div>
+        <p>Check yout IP Adress details such as city, region, timezone and so on.</p>
+      </div>
+    </a>
+    {% if user.is_authenticated %}
+      <a href="#">
+    {% else %}
+      <a href="#">
+    {% endif %}
+      <div class="tools-tool">
+        <div class="tool-name-icom">
+          <div class="home-tool-icom">
+            {% icon "clock" class="css-class" height="40" width="40" %}
+          </div>
+          <p><b>Adding more tools...</b></p>
+        </div>
+        <p>We are currently working on to add more tools to this website which will be available soon.</p>
+      </div>
+    </a>
+      </div>
+    </div>
+  </section>
+
+{% endblock content %}

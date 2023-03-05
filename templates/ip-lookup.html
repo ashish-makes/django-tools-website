@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load icon %}
+
+{% block title %}IP Lookup{% endblock title %}
+
+{% block content %}
+
+<section class='yt-video-downloader container'>
+    <div class='yt-video-downloader-content'>
+
+
+        {% if messages %}
+        {% for message in messages %}
+        <p class='error-msg'>{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+
+        <form name='iplookupform' class='yt-video-downloader-form' action="{% url 'ip-lookup' %}" method="post" class="form">
+        <h1>IP Lookup</h1>
+        {% csrf_token %}
+
+        <label for="ip_address">Enter IP address: </label>
+        <input placeholder='198.168.0.0' type="text" id="ip_address" name="ip_address" required><br><br>
+
+        <center><a href="javascript: submitform()" class='btn' type="submit">Get details</a></center><br>
+        
+        {% if ip_address %}
+  <h1>IP Address Details</h1>
+  <table class="ip-details">
+    <thead>
+      <tr>
+        <th>Field</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>IP Address:</td>
+        <td>{{ ip_address }}</td>
+      </tr>
+      <tr>
+        <td>City:</td>
+        <td>{{ city }}</td>
+      </tr>
+      <tr>
+        <td>Region:</td>
+        <td>{{ region }}</td>
+      </tr>
+      <tr>
+        <td>Country:</td>
+        <td>{{ country }}</td>
+      </tr>
+      <tr>
+        <td>Organization:</td>
+        <td>{{ org }}</td>
+      </tr>
+      <tr>
+        <td>Postal Code:</td>
+        <td>{{ postal }}</td>
+      </tr>
+      <tr>
+        <td>Timezone:</td>
+        <td>{{ timezone }}</td>
+      </tr>
+      <tr>
+        <td>Latitude:</td>
+        <td>{{ latitude }}</td>
+      </tr>
+      <tr>
+        <td>Longitude:</td>
+        <td>{{ longitude }}</td>
+      </tr>
+    </tbody>
+  </table>
+{% endif %}
+    </form>
+</div>
+</section>
+
+<script type="text/javascript"> 
+    function submitform() {   document.iplookupform.submit(); } 
+</script>
+
+{% endblock content %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact{% endblock title %}
+
+{% block content %}
+
+<section class='signup-cta container'>
+    <div class='contact home-tool-feature' style='gap: 1rem; align-items: center'>
+        <img class='contact-img' src='{% static 'img/contact.svg' %}'>
+      <div>
+        <h1 style='font-size: 40px;'>Get in touch with us</h1>
+        <p style='margin-top: 1rem;  margin-bottom: 2rem'>Have a query or want to share your feedback? Just fill the form below and we will get back to you soon.</p>
+        <div id='contact-content' class='contact-content'>
+            <form class='contact-form' method="post" action="/contact">
+                {% csrf_token %}
+                <div class="name">
+                    <label for="name">Name</label><br>
+                    <input placeholder='John Doe' type="text" id="name" name="name">
+                    <p class='nameerror-message'></p>
+                </div>
+                <div class="email">
+                    <label for="email">Email</label><br>
+                    <input placeholder='example@gmail.com' type="text" id="email" name="email">
+                    <p class='emailerror-message'></p>
+                </div>
+                <div class="phone">
+                    <label for="pone">Phone</label><br>
+                    <input placeholder='0000000000' type="text" id="phone" name="phone">
+                    <p class='phoneerror-message'></p>
+                </div>
+                <div class="msg">
+                    <label for="msg">Message</label><br>
+                    <textarea style='height: 200px;' type="text" id="msg" name="msg"></textarea>
+                    <p class='msgerror-message'></p>
+                </div>
+                <button id="submit-button" type='submit' style='border: none; cursor: pointer; padding: .7rem 1rem;' class='btn'>Send</button>
+            </form>
+        </div>
+      </div>
+  </div>
+  </section>
+
+{% endblock content %}

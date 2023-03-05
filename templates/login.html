@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+
+<section class='login container'>
+    <div class='login-content'>
+        <form class='login-form' method="post" action="{% url 'login' %}">
+            <h1 style='margin-bottom: 1rem;'>Login to Toolify</h1>
+            {% csrf_token %}
+            {{form.as_p}}
+            <div class='login-passreset-signup'>
+                <p><a href='/signup'>Do not have an account?</a></p>
+                <p><a href="{% url "password_reset" %}">Forgotten your password?</a></p>
+            <div>
+            <button id="login-button" type='submit' style='border: none; cursor: pointer; padding: .7rem 1rem;' class='btn'>Login</button>
+        </form>
+    </div>
+</section>
+
+{% endblock content %}

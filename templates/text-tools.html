@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Text Tools{% endblock title %}
+
+{% block content %}
+
+<section class='qr-code-generator container'>
+    <div class='yt-video-downloader-content'>
+        <p style='display: none;' class='error-msg'>Enter the text to play with.</p><br>
+        <form class='text-tools-form' name='txtform' method="post">
+            {% csrf_token %}
+            <h1>Text Tools</h1>
+            <textarea class='input-text' name="input_text">{{ input_text }}</textarea><br>
+            <input name='count_words' type="submit" value="Count words">
+            <input name='count_characters' type="submit" value="Count Characters">
+            <input name='uppercase' type="submit" value="Uppercase">
+            <input name='lowercase'type="submit" value="Lowercase">
+            <input name='titlecase' type="submit" value="Titlecase">
+            <input name='reverse' type="submit" value="Reverse">
+            <input name='remove_punctuations' type="submit" value="Remove punctuations">
+            <input name='encode' type="submit" value="Encode">
+            <input name='decode' type="submit" value="Decode">
+            <input name='remove_extra_lines'type="submit" value="Remove extra lines"><br><br>
+            {% if output_text %}
+                <h1>Result</h1>
+                {% comment %} <div class='text-copy-delete'>
+                <span>copy</span>
+                <span>copy</span>
+                </div> {% endcomment %}
+                <textarea id='output-textarea'>{{ output_text }}</textarea><br><br>
+                <center><a style='cursor:pointer;' onclick="copyText()" id="copy-button" class='btn'>Copy text</a></center>
+            {% endif %}
+          </form>
+</div>
+</section>
+
+<script type="text/javascript"> 
+
+    {% comment %} function submitform() { 
+        const errorMsg = document.querySelector('.error-msg');
+        const Inputtext = document.querySelector('.input-text').value;
+
+        if (Inputtext==='') {
+            errorMsg.style.display='block';
+        }
+        else {
+            errorMsg.style.display='none';
+            document.txtform.submit();
+        }
+    }  {% endcomment %}
+
+    function copyText() {
+        var text = document.getElementById("output-textarea");
+        var CopyBtn = document.getElementById("copy-button");
+        // var message = document.querySelector(".success-msg");
+        text.select();
+        document.execCommand("copy");
+        CopyBtn.innerHTML = 'Copied!'
+        setTimeout(function() {
+            CopyBtn.innerHTML = 'Copy text'
+        }, 1000);
+        //message.style.display= 'block'
+      }
+
+</script>
+
+{% endblock content %}

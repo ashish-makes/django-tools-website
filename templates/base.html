@@ -1,0 +1,233 @@
+{% load static %}
+{% load icon %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %}{% endblock title %} - Toolify</title>
+</head>
+<body>
+
+    <!-- Desktop Navbar -->
+    <header>
+        <nav class='container fade'>
+            <span>
+                <a href='/'>Toolify</a>
+            </span>
+            <div style='display: flex; align-items: center;'>
+                <ul>
+                    <a href='/'><li>Home</li></a>
+                    <a href='/about'><li>About</li></a>
+                    <a href='/contact'><li>Contact</li></a>
+                    <a id='tool-btn' style='cursor: pointer;'><li>Tools {% icon "chevron-down" class="css-class" height="16" width="16" %} </li></a>
+                    <a id='dark-mode-toggle' style='cursor: pointer;'><li><i class="bi bi-moon"></i></li></a>
+                    {% if user.is_authenticated %}
+                        <a style='display: none;' class='btn' href='/signup'><li>Signup</li></a>
+                    {% else %}
+                        <a style='margin-right: .5rem;' class='btn' href='/signup'><li>Signup</li></a>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        <a href='/edit_profile'><li>My Account</li></a>
+                    {% else %}
+                        <a style='display: none;' href='/edit_profile'><li>My Account</li></a>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        <a class='btn' href='/logout'><li>Logout</li></a>
+                    {% else %}
+                        <a class='btn' href='/login'><li>Login</li></a>
+                    {% endif %}
+                    {% comment %} <a style='cursor: pointer;'><li>
+                        <label id='dark-mode-toggle' class="switch">
+                            <input type="checkbox" name="dark-mode">
+                            <span class="slider"></span>
+                          </label>                         
+                    </li></a> {% endcomment %}
+                </ul>
+                <div style='display: flex; column-gap: 1rem;'>
+                    <a id='mobmenuBtn' style='cursor: pointer; margin-right: -1rem; font-weight: normal; margin-top: .6rem;'><li><span>{% icon "menu" class="css-class" height="20" width="20" %}</li></a>
+                    <a id='mob-dark-mode-toggle' style='cursor: pointer; margin-top: .4rem;'><li><i style='font-size: 1rem;' class="mob-bi bi bi-moon"></i></li></a>
+                </div>
+            </div>
+        </nav>
+            <!-- Tools Dropdown Menu -->
+    <div class='tools-dropdown-menu container'>
+        <div class='tools-dropdown'>
+            <div class='tool-menu'>
+                <a href='/text-tools'><div class='tool'>{% icon "italic" class="css-class" height="40" width="40" %}</div></a>
+                <span><a href='/text-tools'>Text Tools</a></span>
+            </div>
+            <div class='tool-menu'>
+                <a href='/png-to-webp-convertor'><div class='tool'>{% icon "image" class="css-class" height="40" width="40" %}</div></a>
+                <span><a href='/png-to-webp-convertor'>PNG to WebP</a></span>
+            </div>
+            <div class='tool-menu'>
+                <a href='/password-generator'><div class='tool'>{% icon "key" class="css-class" height="40" width="40" %}</div></a>
+                <span><a href='/password-generator'>Password Generator</a></span>
+            </div>
+            <div class='tool-menu'>
+                <a href='/yt-video-downloader'><div class='tool'>{% icon "video" class="css-class" height="40" width="40" %}</div></a>
+                <span><a href='/yt-video-downloader'>Youtube Video Downloader</a></span>
+            </div>
+            <div class='tool-menu'>
+                <a href='/internet-speed-test'><div class='tool'>{% icon "wifi" class="css-class" height="40" width="40" %}</div></a>
+                <span><a href='/internet-speed-test'>Internet Speedtest</a></span>
+            </div>
+            <div class='tool-menu'>
+                <a href='/ip-lookup'><div class='tool'>{% icon "map-pin" class="css-class" height="40" width="40" %}</div></a>
+                <span><a href='/ip-lookup'>IP Lookup</a></span>
+            </div>
+            <div class='tool-menu'>
+                <a href='/tools'><div class='tool'>{% icon "arrow-right" class="css-class" height="40" width="40" %}</div></a>
+                <span><a href='/tools'>Explore All Tools</a></span>
+            </div>
+        </div>
+    </div>
+    </header>
+
+    <!-- Mobile Navbar -->
+    <div class='mobMenu'>
+        <div class='imp-links'>
+            <ul>
+                <a href='/'><li>Home</li></a>
+                <a href='/about'><li>About</li></a>
+                <a href='/contact'><li>Contact</li></a>
+                {% if user.is_authenticated %}
+                <a style='display: none;' href='/signup'><li>Signup</li></a>
+            {% else %}
+                <a href='/signup'><li>Signup</li></a>
+            {% endif %}
+            {% if user.is_authenticated %}
+                <a href='/edit_profile'><li>My Account</li></a>
+            {% else %}
+                <a style='display: none' href='/edit_profile'><li>My Account</li></a>
+            {% endif %}
+            {% if user.is_authenticated %}
+                <a href='/logout'><li>Logout</li></a>
+            {% else %}
+                <a href='/login'><li>Login</li></a>
+            {% endif %}
+            </ul>
+            <div class='mobTools-menu'>
+                <div class='tool-menu'>
+                    <a href='/text-tools'><div class='tool'>{% icon "italic" class="css-class" height="30" width="30" %}</div></a>
+                    <span><a href='/text-tools'>Text Tools</a></span>
+                </div>
+                <div class='tool-menu'>
+                    <a href='/png-to-webp-convertor'><div class='tool'>{% icon "image" class="css-class" height="30" width="30" %}</div></a>
+                    <span><a href='/png-to-webp-convertor'>PNG to WebP</a></span>
+                </div>
+                <div class='tool-menu'>
+                    <a href='/internet-speed-test'><div class='tool'>{% icon "code" class="css-class" height="30" width="30" %}</div></a>
+                    <span><a href='/internet-speed-test'>Internet Speedtest</a></span>
+                </div>
+                {% comment %} <div class='tool-menu'>
+                    <a href='/'><div class='tool'>{% icon "trending-up" class="css-class" height="30" width="30" %}</div></a>
+                    <span><a href='/'>Productivity</a></span>
+                </div>
+                <div class='tool-menu'>
+                    <a href='/'><div class='tool'>{% icon "hash" class="css-class" height="30" width="30" %}</div></a>
+                    <span><a href='/'>Social Media</a></span>
+                </div> {% endcomment %}
+                {% comment %} <div class='tool-menu'>
+                    <a href='/'><div class='tool'>{% icon "download" class="css-class" height="30" width="30" %}</div></a>
+                    <span><a href='/'>Downloaders</a></span>
+                </div> {% endcomment %}
+                <div class='tool-menu'>
+                    <a href='/tools'><div class='tool'>{% icon "arrow-right" class="css-class" height="30" width="30" %}</div></a>
+                    <span><a href='/tools'>Explore All</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block content %}{% endblock content %}
+
+    <a href='https://github.com/ashish-makes' target='_blank'><div class='ashish-credits'>
+        <span class='icon'><i style='' class="bi bi-suit-heart"></i></span>
+        <span class='text'>A project by <span class='name' style='; font-weight: 500;'>ashish<span></span>
+    </div></a>
+
+    <!-- Footer -->
+    <footer>
+        <div class='footer container'>
+            <div>
+                <h2>Toolify</h2>
+                <p>Toolify is your go-to destination for a wide range of free online tools. With our user-friendly interface and simple tools, get your work done quickly and efficiently!</p><br>
+            </div>
+            <div>
+                <h2>Tools</h2>
+                <ul>
+                    <li><a href='/privacy'>{% icon "arrow-right" class="css-class" height="16" width="16" %} For Developers</a></li>
+                    <li><a href='/disclaimer'>{% icon "arrow-right" class="css-class" height="16" width="16" %} For Bloggers</a></li>
+                    <li><a href='/sitemap'>{% icon "arrow-right" class="css-class" height="16" width="16" %} For Productivity</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Company</h2>
+                <ul>
+                    <li><a href='/privacy'>{% icon "arrow-right" class="css-class" height="16" width="16" %} Privacy</a></li>
+                    <li><a href='/disclaimer'>{% icon "arrow-right" class="css-class" height="16" width="16" %} Disclaimer</a></li>
+                    <li><a href='/sitemap'>{% icon "arrow-right" class="css-class" height="16" width="16" %} Sitemap</a></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Let's connect</h2>
+                <ul>
+                    <li><a href='/'>{% icon "arrow-right" class="css-class" height="16" width="16" %} Github</a></li>
+                    <li><a href='/'>{% icon "arrow-right" class="css-class" height="16" width="16" %} Linkedin</a></li>
+                    <li><a href='/'>{% icon "arrow-right" class="css-class" height="16" width="16" %} YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <div class='footer-credits'>
+        <p>Copyright &copy;<script>document.write(new Date().getFullYear())</script> <span class=""><a href="/">Toolify</a></span> All Rights Reserved</p>
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script>
+        const DarkMode = document.querySelector('#dark-mode-toggle');
+const MobDarkMode = document.querySelector('#mob-dark-mode-toggle');
+const icon = document.querySelector('.bi');
+const mobicon = document.querySelector('.mob-bi');
+const body = document.body;
+const isDarkMode = localStorage.getItem('isDarkMode') === 'true';
+
+// Set the initial state based on local storage
+if (isDarkMode) {
+  body.classList.add('dark-mode');
+  icon.classList.remove('bi-moon')
+  icon.classList.add('bi-sun')
+  mobicon.classList.remove('bi-moon')
+  mobicon.classList.add('bi-sun')
+  DarkMode.checked = true;
+  MobDarkMode.checked = true;
+} else {
+  body.classList.remove('dark-mode');
+  icon.classList.remove('bi-sun')
+  icon.classList.add('bi-moon')
+  mobicon.classList.remove('bi-sun')
+  mobicon.classList.add('bi-moon')
+  DarkMode.checked = false;
+  MobDarkMode.checked = false;
+}
+
+function toggleDarkMode() {
+  body.classList.toggle('dark-mode');
+  icon.classList.toggle('bi-moon');
+  icon.classList.toggle('bi-sun');
+  mobicon.classList.toggle('bi-moon');
+  mobicon.classList.toggle('bi-sun');
+  localStorage.setItem('isDarkMode', body.classList.contains('dark-mode'));
+}
+
+DarkMode.addEventListener('click', toggleDarkMode);
+MobDarkMode.addEventListener('click', toggleDarkMode);
+
+    </script>
+</body>
+</html>

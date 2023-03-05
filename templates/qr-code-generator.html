@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}QR Code Generator{% endblock title %}
+
+{% block content %}
+
+<section class='qr-code-generator container'>
+    <div class='yt-video-downloader-content'>
+        <p style='display: none;' class='error-msg'>Enter the text to generate qr code.</p>
+        <form name='qrform' class='yt-video-downloader-form' action="" method="post" class="qrform">
+        <h1>QR Code Generator</h1>
+        {% csrf_token %}
+
+        <label for="qr-text">Enter text</label><br>
+        <textarea class='qr-text' placeholder='Hello world' type="text" id="qr-text" name="qr-text"></textarea><br><br>
+
+        <label for="qr-box-size">Box size:</label>
+        <input type="number" name="qr-box-size" id="qr-box-size" value="10" min="1" max="50"><br><br>
+
+        <label for="qr-border-size">Border size:</label>
+        <input type="number" name="qr-border-size" id="qr-border-size" value="5" min="0" max="20"><br><br>
+
+        <div>
+            <div class='qr-pick-color-container'>
+                <label for="qr-fill-color">Fill Color</label>
+                <input type="color" class="form-control" id="qr-fill-color" name="qr-fill-color" value="#000000">
+            </div>
+            <div class='qr-pick-color-container'>
+                <label for="qr-back-color">Background Color</label>
+                <input style='border: 1px solid #000' type="color" class="form-control" id="qr-back-color" name="qr-back-color" value="#ffffff">
+            </div>
+        </div><br>
+
+        <center><a href="javascript: submitform()" class='btn' type="submit">Generate QR code</a></center><br>
+
+        {% if qr_code %}
+        <div class='qr-code'>
+            <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code"><br>
+        </div><br>
+        <center><a href="data:image/png;base64,{{ qr_code }}" download="qr_code.png" class='btn'>Download QR code</a></center>
+        {% endif %}
+       
+    </form>
+</div>
+</section>
+
+<script type="text/javascript"> 
+
+    function submitform() { 
+        const errorMsg = document.querySelector('.error-msg');
+        const QRtext = document.querySelector('.qr-text').value;
+
+        if (QRtext==='') {
+            errorMsg.style.display='block';
+        }
+        else {
+            errorMsg.style.display='none';
+            document.qrform.submit();
+        }
+    } 
+
+</script>
+
+{% endblock content %}

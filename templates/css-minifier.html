@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}CSS Minifier{% endblock title %}
+
+{% block content %}
+
+<section class='qr-code-generator container'>
+    <div class='yt-video-downloader-content'>
+        {% comment %} <p style='display: none;' class='error-msg'>Enter the CSS.</p><br> {% endcomment %}
+        <form class='text-tools-form' name='txtform' method="post">
+            {% csrf_token %}
+            <h1>CSS Minifier</h1>
+            <textarea placeholder='Enter your CSS to minify' name="css" id="css"></textarea><br>
+
+            <center><input name='remove_extra_lines'type="submit" value="Minify CSS"></center><br>
+            {% if minified_css %}
+                <h1>Minified CSS:</h1>
+                <textarea id='output-textarea'>{{ minified_css }}</textarea><br><br>
+                <center><a style='cursor:pointer;' onclick="copyText()" id="copy-button" class='btn'>Copy text</a></center>
+            {% endif %}
+          </form>
+</div>
+</section>
+
+<script type="text/javascript"> 
+
+    function copyText() {
+        var text = document.getElementById("output-textarea");
+        var CopyBtn = document.getElementById("copy-button");
+        // var message = document.querySelector(".success-msg");
+        text.select();
+        document.execCommand("copy");
+        CopyBtn.innerHTML = 'Copied!'
+        setTimeout(function() {
+            CopyBtn.innerHTML = 'Copy text'
+        }, 1000);
+        //message.style.display= 'block'
+      }
+
+</script>
+
+
+{% endblock content %}
