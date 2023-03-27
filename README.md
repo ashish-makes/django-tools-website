@@ -11,7 +11,9 @@
 ## Introduction
 **"Toolify"** website provides a collection of useful online tools that can help improve productivity and simplify various tasks. From text and image editing to password generation and unit conversion, this website offers a range of simple yet powerful tools that can be accessed from any device with an internet connection.
 
-![django-tools-website](https://user-images.githubusercontent.com/106135144/222945946-d1ab2dbb-0dc0-4654-adcc-06b71321076a.png)
+![toolify](https://user-images.githubusercontent.com/106135144/227856775-fe65f579-ac18-4923-9f1b-c1848d03b508.png)
+
+![toolify-dark](https://user-images.githubusercontent.com/106135144/227857132-44b8a1f5-dc3c-458d-918a-2a4cb6adc75d.png)
 
 ## Table of Content
   * [Introduction](#introduction)
@@ -61,15 +63,8 @@ python manage.py runserver
 5. User-friendly design with easy navigation and search functionality.
 
 ## Website Screenshots
-![image](https://user-images.githubusercontent.com/106135144/222946174-5468c200-ad5a-4a7b-998e-6aaf4d144824.png)
 
-![image](https://user-images.githubusercontent.com/106135144/222946183-d18c4baa-2617-4e03-8b73-15bea665e3ff.png)
-
-![django-tools-website-toolify](https://user-images.githubusercontent.com/106135144/222946288-c95543ab-3af8-4529-8037-5901eb410cd0.png)
-
-![image](https://user-images.githubusercontent.com/106135144/222946408-da8d2a43-4707-44f7-971f-c20c38c400ff.png)
-
-![image](https://user-images.githubusercontent.com/106135144/222946411-63ecf2b5-f623-4e80-b42a-1557ee82f64f.png)
+![tools](https://user-images.githubusercontent.com/106135144/227857694-5f364a3d-9219-499d-ac5a-6fc23e756b8e.png)
 
 ## Conclusion
 This project is a web-based productivity tool website developed using Python, HTML, CSS, and JavaScript. It includes features such as a CSS Minifier, PNG to WebP convertor, a password generator and so on all designed to help users be more productive.
